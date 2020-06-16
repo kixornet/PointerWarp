@@ -44,6 +44,7 @@
 			this.button_warpToggle.TabIndex = 0;
 			this.button_warpToggle.Text = "Engage";
 			this.button_warpToggle.UseVisualStyleBackColor = true;
+			this.button_warpToggle.Click += new System.EventHandler(this.button_warpToggle_Click);
 			// 
 			// textBox_warpRange
 			// 
