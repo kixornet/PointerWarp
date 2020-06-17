@@ -48,9 +48,9 @@
 			// 
 			// textBox_warpRange
 			// 
-			this.textBox_warpRange.Location = new System.Drawing.Point(168, 24);
+			this.textBox_warpRange.Location = new System.Drawing.Point(181, 22);
 			this.textBox_warpRange.Name = "textBox_warpRange";
-			this.textBox_warpRange.Size = new System.Drawing.Size(54, 20);
+			this.textBox_warpRange.Size = new System.Drawing.Size(36, 20);
 			this.textBox_warpRange.TabIndex = 2;
 			// 
 			// label1
