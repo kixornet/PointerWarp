@@ -12,7 +12,8 @@ namespace PointerWarp
 {
 	public partial class Form1 : Form
 	{
-		private const float WARP_RANGE_DEFAULT = 0.9f;
+		private WarpManager warpManager;
+		private const float WARP_RANGE_DEFAULT = 90.0f;
 		private const string WARP_BUTTON_TEXT_GO = "Engage";
 		private const string WARP_BUTTON_TEXT_STOP = "Stop";
 
@@ -20,6 +21,7 @@ namespace PointerWarp
 		{
 			InitializeComponent();
 
+			warpManager = new WarpManager();
 			button_warpToggle.Text = WARP_BUTTON_TEXT_GO;
 			float warpRange = WARP_RANGE_DEFAULT;
 			textBox_warpRange.Text = warpRange.ToString("0");
@@ -28,6 +30,10 @@ namespace PointerWarp
 		private void button_warpToggle_Click(object sender, EventArgs e)
 		{
 			toggleWarpButtonText();
+			float range;
+			float.TryParse(textBox_warpRange.Text, out range);
+			warpManager.setRange(range/100.0f);
+			warpManager.toggle(Screen.FromControl(this));
 		}
 
 		private void toggleWarpButtonText()
