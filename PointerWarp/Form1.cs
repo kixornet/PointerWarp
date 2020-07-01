@@ -30,9 +30,7 @@ namespace PointerWarp
 		private void button_warpToggle_Click(object sender, EventArgs e)
 		{
 			toggleWarpButtonText();
-			float range;
-			float.TryParse(textBox_warpRange.Text, out range);
-			warpManager.setRange(range/100.0f);
+			updateWarpRange();
 			warpManager.toggle(Screen.FromControl(this));
 		}
 
@@ -42,6 +40,18 @@ namespace PointerWarp
 				button_warpToggle.Text = WARP_BUTTON_TEXT_STOP;
 			else
 				button_warpToggle.Text = WARP_BUTTON_TEXT_GO;
+		}
+
+		private void textBox_warpRange_TextChanged(object sender, EventArgs e)
+		{
+			updateWarpRange();
+		}
+
+		private void updateWarpRange()
+		{
+			float range;
+			float.TryParse(textBox_warpRange.Text, out range);
+			warpManager.setRange(range / 100.0f);
 		}
 	}
 }

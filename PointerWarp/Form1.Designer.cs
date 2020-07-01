@@ -52,6 +52,7 @@
 			this.textBox_warpRange.Name = "textBox_warpRange";
 			this.textBox_warpRange.Size = new System.Drawing.Size(36, 20);
 			this.textBox_warpRange.TabIndex = 2;
+			this.textBox_warpRange.TextChanged += new System.EventHandler(this.textBox_warpRange_TextChanged);
 			// 
 			// label1
 			// 
