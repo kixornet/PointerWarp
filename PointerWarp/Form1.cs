@@ -13,6 +13,8 @@ namespace PointerWarp
 	public partial class Form1 : Form
 	{
 		private WarpManager warpManager;
+		private HotKeyManager hotKeyManager;
+		private long lastHotKeyTime;
 		private const float WARP_RANGE_DEFAULT = 90.0f;
 		private const string WARP_BUTTON_TEXT_GO = "Engage";
 		private const string WARP_BUTTON_TEXT_STOP = "Stop";
@@ -22,6 +24,9 @@ namespace PointerWarp
 			InitializeComponent();
 
 			warpManager = new WarpManager();
+			hotKeyManager = new HotKeyManager();
+			hotKeyManager.hotKeyListener += new EventHandler<EventArgs>(globalHotKey_Pressed);
+			hotKeyManager.registerHotKey(Modifier.Shift, Keys.Back);
 			button_warpToggle.Text = WARP_BUTTON_TEXT_GO;
 			float warpRange = WARP_RANGE_DEFAULT;
 			textBox_warpRange.Text = warpRange.ToString("0");
@@ -45,6 +50,16 @@ namespace PointerWarp
 		private void textBox_warpRange_TextChanged(object sender, EventArgs e)
 		{
 			updateWarpRange();
+		}
+
+		private void globalHotKey_Pressed(object sender, EventArgs e)
+		{
+			long now = DateTime.Now.Ticks / TimeSpan.TicksPerMillisecond;
+			int delay = 500;
+			if (now - lastHotKeyTime < delay)
+				button_warpToggle_Click(sender, e);
+			else
+				lastHotKeyTime = now;
 		}
 
 		private void updateWarpRange()
