@@ -30,6 +30,7 @@ namespace PointerWarp
 			button_warpToggle.Text = WARP_BUTTON_TEXT_GO;
 			float warpRange = WARP_RANGE_DEFAULT;
 			textBox_warpRange.Text = warpRange.ToString("0");
+			this.TopMost = checkBox_onTop.Checked;
 		}
 
 		private void button_warpToggle_Click(object sender, EventArgs e)
@@ -67,6 +68,16 @@ namespace PointerWarp
 			float range;
 			float.TryParse(textBox_warpRange.Text, out range);
 			warpManager.setRange(range / 100.0f);
+		}
+
+		private void checkBox_onTop_CheckedChanged(object sender, EventArgs e)
+		{
+			this.TopMost = checkBox_onTop.Checked;
+		}
+
+		private void Form1_Load(object sender, EventArgs e)
+		{
+			checkBox_onTop_CheckedChanged(sender, e);
 		}
 	}
 }

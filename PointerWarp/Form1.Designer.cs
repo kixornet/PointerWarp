@@ -84,6 +84,7 @@
 			this.checkBox_onTop.TabIndex = 1;
 			this.checkBox_onTop.Text = "Always on top";
 			this.checkBox_onTop.UseVisualStyleBackColor = true;
+			this.checkBox_onTop.CheckedChanged += new System.EventHandler(this.checkBox_onTop_CheckedChanged);
 			// 
 			// label3
 			// 
@@ -109,6 +110,7 @@
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
 			this.Name = "Form1";
 			this.Text = "PointerWarp";
+			this.Load += new System.EventHandler(this.Form1_Load);
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
